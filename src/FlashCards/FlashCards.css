@@ -1,0 +1,35 @@
+.flash-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.flash-card {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f0f8ff;
+  border: 2px solid skyblue;
+  border-radius: 4px;
+}
+
+.flash-card:hover {
+  cursor: pointer;
+  background-color: hsl(208, 100%, 94%);
+}
+
+.flash-card.showed {
+  background-color: #fff0f0;
+  border: 2px solid rgb(235, 135, 135);
+}
+
+.flash-card.showed:hover {
+  background-color: hsl(0, 100%, 94%);
+  border: 2px solid hsl(0, 71%, 73%);
+}
+
+.flash-card p {
+  user-select: none;
+}
