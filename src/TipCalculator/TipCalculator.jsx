@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./TipCalculator.css";
 
-const calcState = { bill: 0, selfSatisfaction: 0, friendSatisfaction: 0 };
+const calcState = { bill: "", selfSatisfaction: "", friendSatisfaction: "" };
 
 function TipCalculator() {
   const [state, setState] = useState(calcState);
@@ -12,6 +12,10 @@ function TipCalculator() {
 
   function onSatisfaction(e) {
     setState((state) => ({ ...state, [e.target.name]: +e.target.value }));
+  }
+
+  function onReset() {
+    setState(calcState);
   }
   console.log(state);
   return (
@@ -29,7 +33,12 @@ function TipCalculator() {
         state={state}
         handleChange={onSatisfaction}
       />
-      <DisplayResult state={state} />
+      {state.bill > 0 && (
+        <>
+          <DisplayResult state={state} />
+          <Reset handleClick={onReset} />
+        </>
+      )}
     </div>
   );
 }
@@ -72,6 +81,10 @@ function Question({ question, children }) {
       {question} {children}
     </div>
   );
+}
+
+function Reset({ handleClick }) {
+  return <button onClick={handleClick}>Reset</button>;
 }
 
 export default TipCalculator;
