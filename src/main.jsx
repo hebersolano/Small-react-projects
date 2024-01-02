@@ -7,5 +7,6 @@ import DateCounter from "./DateCounter/DateCounter.jsx";
 import FlashCards from "./FlashCards/FlashCards.jsx";
 import DateCounter_v2 from "./DateCounter_v2/DateCounter_v2.jsx";
 import Accordion from "./Accordion/Accordion_v2.jsx";
+import TipCalculator from "./TipCalculator/TipCalculator.jsx";
 
-ReactDOM.createRoot(document.getElementById("root")).render(<Accordion />);
+ReactDOM.createRoot(document.getElementById("root")).render(<TipCalculator />);
