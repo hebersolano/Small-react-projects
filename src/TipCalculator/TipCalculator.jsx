@@ -17,6 +17,7 @@ function TipCalculator() {
   function onReset() {
     setState(calcState);
   }
+
   console.log(state);
   return (
     <div className="tip-calculator">
