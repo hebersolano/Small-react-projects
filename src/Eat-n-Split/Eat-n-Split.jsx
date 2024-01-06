@@ -15,7 +15,7 @@ const data = [
 export default function EatAndSplit() {
   const [list, setList] = useState(data);
   const [showAddFriend, setShowAddFriend] = useState(false);
-  const [dataForm, setDataForm] = useState(null);
+  const [selectedFriend, setSelectedFriend] = useState(null);
 
   const ctrl = {
     addFriend(data) {
@@ -23,11 +23,13 @@ export default function EatAndSplit() {
         if (!data.photo) data.photo = "./person.png";
         return [...list, { ...data, owe: 0, id: uuid() }];
       });
+      setShowAddFriend(false);
     },
 
     saveData(id, owe) {
       setList((list) =>
         list.map((friend) => {
+          console.log(friend);
           if (friend.id == id) return { ...friend, owe };
           return friend;
         })
@@ -36,23 +38,27 @@ export default function EatAndSplit() {
   };
 
   const view = {
-    showForm: function (i) {
-      setDataForm(list[i]);
+    showForm: function (i, id) {
+      setSelectedFriend((selected) => (selected?.id == id ? null : list[i]));
+      setShowAddFriend(false);
     },
   };
-
-  console.log(list);
 
   return (
     <div className="eat-n-split">
       <div className="sidebar">
-        <ListOfFriends listFriends={list} onSelect={view.showForm} addFriend={ctrl.addFriend} />
+        <ListOfFriends
+          listFriends={list}
+          onSelect={view.showForm}
+          addFriend={ctrl.addFriend}
+          selectedFriend={selectedFriend}
+        />
         {showAddFriend && <AddFriendForm addFriend={ctrl.addFriend} />}
         <button className="btn btn-form" onClick={() => setShowAddFriend((state) => !state)}>
           {!showAddFriend ? "Add New Friend" : "Close"}
         </button>
       </div>
-      {dataForm && <BillAndSplit friend={dataForm} saveData={ctrl.saveData} />}
+      {selectedFriend && <BillAndSplit friend={selectedFriend} saveData={ctrl.saveData} />}
     </div>
   );
 }

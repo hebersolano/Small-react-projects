@@ -6,8 +6,9 @@ export default function BillAndSplit({ friend, saveData }) {
   function handleChange(evt) {
     setFormState((state) => {
       if (evt.target.name == "yourExpense") {
-        const friendExpense = state.bill - evt.target.value;
-        return { ...state, yourExpense: evt.target.value, friendExpense };
+        const yourExpense = +evt.target.value <= +formState.bill ? evt.target.value : formState.yourExpense;
+        const friendExpense = state.bill - yourExpense;
+        return { ...state, yourExpense, friendExpense };
       } else {
         return { ...state, [evt.target.name]: evt.target.value };
       }
@@ -35,6 +36,7 @@ export default function BillAndSplit({ friend, saveData }) {
           id="your-expense"
           value={formState.yourExpense}
           onChange={handleChange}
+          max={formState.bill}
           required
         />
         <label htmlFor="friend-expense">{friend.name} expense</label>

@@ -1,27 +1,34 @@
-export default function ListOfFriends({ listFriends, onSelect }) {
+export default function ListOfFriends({ listFriends, onSelect, selectedFriend }) {
   return (
     <ul className="friends">
       {listFriends.map((friend, i) => (
-        <ListItem key={i} name={friend.name} owe={friend.owe} photo={friend.photo} onSelect={() => onSelect(i)} />
+        <ListItem key={i} friend={friend} selectedFriend={selectedFriend} onSelect={() => onSelect(i, friend.id)} />
       ))}
     </ul>
   );
 }
 
-function ListItem({ name, owe, photo, onSelect }) {
+function ListItem({ friend, selectedFriend, onSelect }) {
+  const isSelected = friend.id == selectedFriend?.id;
+
   let state =
-    owe == 0 ? `You and ${name} are even` : owe < 0 ? `You owe ${name} $${Math.abs(owe)}` : `${name} owes you $${owe}`;
+    friend.owe == 0
+      ? `You and ${friend.name} are even`
+      : friend.owe < 0
+      ? `You owe ${friend.name} $${Math.abs(friend.owe)}`
+      : `${friend.name} owes you $${friend.owe}`;
+
   return (
-    <li className="friend">
-      <img src={photo} alt="profile" />
+    <li className={isSelected ? "friend selected" : "friend"}>
+      <img src={friend.photo} alt="profile" />
       <div className="txt">
-        <p className="name">{name}</p>
-        <p className="state" style={{ color: owe < 0 ? "red" : owe > 0 ? "green" : "" }}>
+        <p className="name">{friend.name}</p>
+        <p className="state" style={{ color: friend.owe < 0 ? "red" : friend.owe > 0 ? "green" : "" }}>
           {state}
         </p>
       </div>
       <button className="btn" onClick={onSelect}>
-        Select
+        {isSelected ? "Close" : "Select"}
       </button>
     </li>
   );

@@ -66,6 +66,10 @@ select {
   background-color: #fef3e2;
 }
 
+.selected {
+  background-color: #fef3e2;
+}
+
 .friend img {
   width: 54px;
   height: 54px;
