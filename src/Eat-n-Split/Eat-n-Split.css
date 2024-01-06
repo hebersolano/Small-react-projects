@@ -1,9 +1,10 @@
 #root {
-  width: 100%;
   height: 100vh;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
+  margin-top: 6rem;
+  color: #495057;
   /* background-color: orange; */
 }
 
@@ -39,12 +40,11 @@ select {
 }
 
 .eat-n-split {
-  max-width: 1000px;
+  /* max-width: 1000px; */
   display: grid;
   grid-template-columns: 2fr 3fr;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: white;
+  column-gap: 4rem;
+  align-items: start;
 }
 
 .hidden {
@@ -55,7 +55,7 @@ select {
 .friend {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 8px;
   padding: 0.6rem 1.2rem;
   margin-bottom: 1rem;
@@ -78,6 +78,14 @@ select {
   line-height: 26px;
 }
 
+.friend .btn {
+  margin-left: auto;
+}
+
+.sidebar .btn-form {
+  margin-top: 1rem;
+}
+
 .form-add {
   display: grid;
   align-items: center;
@@ -93,11 +101,16 @@ select {
   grid-column: 2/3;
 }
 
+.state {
+  font-size: 14px;
+}
+
 /* BILL AND SPLIT */
 .bill-and-split {
   padding: 2rem 1.5rem;
   border-radius: 8px;
   background-color: #fef3e2;
+  height: fit-content;
 }
 
 .bill-form {
