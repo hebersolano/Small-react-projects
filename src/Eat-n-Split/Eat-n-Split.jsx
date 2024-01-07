@@ -26,14 +26,15 @@ export default function EatAndSplit() {
       setShowAddFriend(false);
     },
 
-    saveData(id, owe) {
+    saveData(id, balance) {
       setList((list) =>
         list.map((friend) => {
           console.log(friend);
-          if (friend.id == id) return { ...friend, owe };
+          if (friend.id == id) return { ...friend, owe: +friend.owe + +balance };
           return friend;
         })
       );
+      setSelectedFriend(null);
     },
   };
 

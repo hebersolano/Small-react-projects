@@ -19,10 +19,10 @@ export default function BillAndSplit({ friend, saveData }) {
     let owe = 0;
     if (formState.whoPay == "You") owe = formState.friendExpense;
     else owe = -formState.yourExpense;
-    console.log(owe);
     saveData(friend.id, owe);
+    setFormState({ bill: 0, yourExpense: 0, friendExpense: 0, whoPay: "You" });
   }
-  console.log(formState);
+
   return (
     <div className="bill-and-split">
       <h2 className="title">Split a bill with {friend.name}</h2>
