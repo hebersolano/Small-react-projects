@@ -55,11 +55,13 @@ export default function EatAndSplit() {
           selectedFriend={selectedFriend}
         />
         {showAddFriend && <AddFriendForm addFriend={ctrl.addFriend} />}
+
         <button className="btn btn-form" onClick={() => setShowAddFriend((state) => !state)}>
           {!showAddFriend ? "Add New Friend" : "Close"}
         </button>
       </div>
-      {selectedFriend && <BillAndSplit friend={selectedFriend} saveData={ctrl.saveData} />}
+
+      {selectedFriend && <BillAndSplit key={selectedFriend.id} friend={selectedFriend} saveData={ctrl.saveData} />}
     </div>
   );
 }
