@@ -10,5 +10,6 @@ import Accordion from "./Accordion/Accordion_v2.jsx";
 import TipCalculator from "./TipCalculator/TipCalculator.jsx";
 import EatAndSplit from "./Eat-n-Split/Eat-n-Split.jsx";
 import CurrencyConverter from "./CurrencyConverter/CurrencyConverter.jsx";
+import Geolocation from "./CurrencyConverter/useGeolocation/Geolocation.jsx";
 
-ReactDOM.createRoot(document.getElementById("root")).render(<CurrencyConverter />);
+ReactDOM.createRoot(document.getElementById("root")).render(<Geolocation />);
